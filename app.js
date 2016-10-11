@@ -77,5 +77,5 @@ app.use(function(err, req, res, next) {
 });
 
 // 输出app服务器应用，让bin目录下的www文件开启端口监听
-app.listen(3000)
-//module.exports = app;
+//app.listen(3000)
+module.exports = app;

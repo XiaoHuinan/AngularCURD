@@ -1,5 +1,4 @@
 (function () {
-    // 现在我们的“硬盘”是独立的硬盘
     var app = angular.module('s9.model_network', []);
     // modelService是我们全程序的数据中心：现在需要做网络访问
     // 网络访问需要：$http
@@ -39,14 +38,13 @@
                     });
         }
 
-        // 3、用于往数据源里添加新的一条数据
-        this.add = function (name, phone, callback) {
-            // 调用服务器给的接口，数据是在服务器上的。
-            // 我们现在只是通知服务器去做什么操作，
-            // 服务器完成操作之后，会告诉我们操作是否成功
+
+        // 3、从数据源中删除项目
+        this.del = function (guest, callback) {
+            console.log(guest)
             $http
-                .get('http://127.0.0.1:3000/nl/add',
-                    {params: {name: name, phone: phone}})
+                .get('http://127.0.0.1:3000/nl/del',
+                    {params: {name: guest.name, phone: guest.phone}})
                 .then(
                     // 网络访问成功后执行的函数
                     function (res) {
@@ -57,12 +55,11 @@
                         callback({status: 'failed', message: '网络访问失败'})
                     });
         };
-        // 3、从数据源中删除项目
-        this.del = function (guest, callback) {
-            console.log(guest)
+        // 4、用于往数据源里添加新的一条数据
+        this.add = function (name, phone, callback) {
             $http
-                .get('http://127.0.0.1:3000/nl/del',
-                    {params: {name: guest.name, phone: guest.phone}})
+                .get('http://127.0.0.1:3000/nl/add',
+                    {params: {name: name, phone: phone,state:"邀请中"}})
                 .then(
                     // 网络访问成功后执行的函数
                     function (res) {

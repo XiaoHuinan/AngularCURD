@@ -35,13 +35,12 @@ router.get('/set', function (req, res, next) {
     product.getProByPhone(req.query.phone, function (err) {
         if (err) return next(err);
         // 进行数据修改
-        product.updateProByid(req.query, function (err) {
+        product.updateProByPhone(req.query, function (err) {
             if (err)res.json({error: err});
             res.json({success: "true"});
         });
     })
 });
-
 
 
 // delete请求删除单条数据
@@ -53,15 +52,26 @@ router.get('/del', function (req, res) {
     })
 });
 
-//通过post请求去新增数据
-//router.post('/pro', function (req, res, next) {
+// 通过get请求去添加一个数据
+router.get('/add', function (req, res, next) {
+    console.log("进入add")
+    console.log(req.query)
+    product.addGuest(req.query,function(err,data){
+        if (err)res.json({error: err});
+        res.json({success: "true"});
+
+    })
+});
+
+// 待改进，通过post请求去新增数据
+//router.post('/add', function (req, res, next) {
 //    console.log(req.body);
 //    var pro = new product({
 //        photo  : req.body.photo?req.body.photo:'',
 //        price  : req.body.price?req.body.price:'',
 //        describe : req.body.describe?req.body.describe:'',
 //        name : req.body.name?req.body.name:''
-//})
+//    })
 //    product.savePro(pro,function(err,data){
 //        if (err)res.json({error: err});
 //        res.json({success: "true"});
