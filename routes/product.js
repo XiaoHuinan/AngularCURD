@@ -5,8 +5,8 @@
 var express = require('express'),
     router = express.Router(),
     product = require('../models/product');
-    
-// 获取嘉宾列表
+
+// 筛选页面获取嘉宾列表
 router.get('/getlist', function (req, res,next) {
     console.log("请求已进入getlist");
 
@@ -17,26 +17,33 @@ router.get('/getlist', function (req, res,next) {
             res.json(pro);
         });
     }else{
-        console.log("非全部")
-        console.log(req.query.state)
-        product.getProByid(req.query.state, function (err, pro) {
+        console.log("非全部");
+        console.log(req.query.state);
+
+        product.getProByState(req.query.state, function (err, pro) {
             res.json(pro);
         })
 
     }
     //res.end("进来getlist了")
 });
-// 测试是否接收到了参数
-//router.get('/pro/:phone', function (req, res) {
-//    console.log(req.param('phone'))
-//    //res.end("呵呵")
-//});
-//get请求+id 查询单个产品信息
-router.get('/getlist/:state', function (req, res) {
-    //console.log(req.param('state'))
 
-
+// 修改嘉宾的邀请状态
+router.get('/set', function (req, res, next) {
+    console.log(req.query)
+    // 先判断一下是否有这个数据，手机号唯一，用手机号判断
+    product.getProByPhone(req.query.phone, function (err) {
+        if (err) return next(err);
+        // 进行数据修改
+        product.updateProByid(req.query, function (err) {
+            if (err)res.json({error: err});
+            res.json({success: "true"});
+        });
+    })
 });
+
+
+
 // delete请求删除单条数据
 //router.delete('/pro/:phone', function (req, res) {
 //    product.deletProByid(req.params.id, function (err, data) {
@@ -44,25 +51,7 @@ router.get('/getlist/:state', function (req, res) {
 //        res.json({success: "true"});l
 //    })
 //});
-//put请求去修改产品信息
-//router.put('/pro/:phone', function (req, res, next) {
-//    //先查询出这条数据
-//    product.getProByid(req.params.id, function (err, pro) {
-//        if (err) return next(err);
-//        if (pro)
-//            var proObj = pro[0];
-//        //拼接要修改的数据
-//        if (req.params.price) {
-//            proObj.price = req.params.price;
-//            console.dir(proObj.price);
-//        }
-//        //进行数据修改
-//        product.updateProByid(proObj, function (err) {
-//            if (err)res.json({error: err});
-//            res.json({success: "true"});
-//        });
-//    })
-//});
+
 //通过post请求去新增数据
 //router.post('/pro', function (req, res, next) {
 //    console.log(req.body);

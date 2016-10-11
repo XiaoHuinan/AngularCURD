@@ -57,6 +57,7 @@
         };
         // 修改用户状态
         this.setState = function (guest, state, callback) {
+            console.log(guest);
             $http
                 .get('http://127.0.0.1:3000/nl/set',
                     {params: {name: guest.name, phone: guest.phone,state:state}})
