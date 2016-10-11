@@ -6,11 +6,25 @@ var express = require('express'),
     router = express.Router(),
     product = require('../models/product');
     
-// 测试是否进入
-router.get('/pro/', function (req, res,next) {
-    //console.log(req.param('name'))
-    console.log(323232)
-    next();
+// 获取嘉宾列表
+router.get('/getlist', function (req, res,next) {
+    console.log("请求已进入getlist");
+
+    console.log('数据类型为'+req.query.state);
+    // 不同页面的请求列表的逻辑
+    if(req.query.state === "全部"){
+        product.getAllList(function (err, pro) {
+            res.json(pro);
+        });
+    }else{
+        console.log("非全部")
+        console.log(req.query.state)
+        product.getProByid(req.query.state, function (err, pro) {
+            res.json(pro);
+        })
+
+    }
+    //res.end("进来getlist了")
 });
 // 测试是否接收到了参数
 //router.get('/pro/:phone', function (req, res) {
@@ -18,13 +32,10 @@ router.get('/pro/', function (req, res,next) {
 //    //res.end("呵呵")
 //});
 //get请求+id 查询单个产品信息
-router.get('/pro/:phone', function (req, res) {
-    console.log(req.param('phone'))
-    product.getProByid(req.param('phone'), function (err, pro) {
-        res.json(pro[0]);
-        console.log(123)
-        console.log(pro)
-    })
+router.get('/getlist/:state', function (req, res) {
+    //console.log(req.param('state'))
+
+
 });
 // delete请求删除单条数据
 //router.delete('/pro/:phone', function (req, res) {

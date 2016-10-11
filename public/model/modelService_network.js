@@ -41,8 +41,9 @@
         };
         // 根据条件从数据源中获取一个列表
         this.getList = function (state, callback) {
+            console.log(state)
             $http
-                .get('http://127.0.0.1:3000/nl/list',
+                .get('http://127.0.0.1:3000/nl/getlist',
                     {params: {state:state}})
                 .then(
                     // 网络访问成功后执行的函数
