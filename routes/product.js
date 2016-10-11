@@ -45,12 +45,13 @@ router.get('/set', function (req, res, next) {
 
 
 // delete请求删除单条数据
-//router.delete('/pro/:phone', function (req, res) {
-//    product.deletProByid(req.params.id, function (err, data) {
-//        if (err) return next(err);
-//        res.json({success: "true"});l
-//    })
-//});
+router.get('/del', function (req, res) {
+    console.log("进入删除逻辑")
+    product.deletProByid(req.query, function (err, data) {
+        if (err) return next(err);
+        res.json({success: "true"});
+    })
+});
 
 //通过post请求去新增数据
 //router.post('/pro', function (req, res, next) {

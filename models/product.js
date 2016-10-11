@@ -70,18 +70,19 @@ Product.updateProByid=function(data,callback){
 }
 
 
-//Product.deletProByid=function(id,callback){
-//    var delSql = 'DELETE FROM product WHERE phone=?';
-//    connection.query(delSql, [id], function (err, res) {
-//        if (err) {
-//            console.log('getProByid err:' + err);
-//            return;
-//        }
-//       // console.log('Get product success'+res);
-//        //console.dir(res);
-//        callback(err, res);
-//    });
-//}
+Product.deletProByid=function(data,callback){
+    console.log(data)
+    var delSql = 'DELETE FROM list WHERE phone=?';
+    connection.query(delSql, [data.phone], function (err, res) {
+        if (err) {
+            console.log('getProByid err:' + err);
+            return;
+        }
+       // console.log('Get product success'+res);
+        //console.dir(res);
+        callback(err, res);
+    });
+}
 
 //Product.savePro=function(product,callback){
 //    var id=uuid.v1();
