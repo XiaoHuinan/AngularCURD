@@ -2,10 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>服务</title>
+    <script src="./javascript/angular.min.js"></script>
+    <script src="./javascript/angular-route.min.js"></script>
+    <script src="./model/modelService_network.js"></script>
+    <script src="./controller/mainController.js"></script>
+    <style>
+        .high-light {
+            background-color: orange;
+        }
+    </style>
+
 </head>
 <body>
-hellodfdsf
+<div ng-app="s9.app">
+    <div ng-controller="MainController">
+        <div>
+            <label for="input_name">姓名</label>
+            <input type="text" id="input_name" ng-model="newGuest.name">
+            <label for="input_phone">电话</label>
+            <input type="text" id="input_phone" ng-model="newGuest.phone">
+            <button ng-click="actions.add()">邀请</button>
+        </div>
+        <div>
+            <button ng-class="{'high-light':state ==  '全部'}" ng-click="actions.filter('全部')">全部</button>
+            <button ng-class="{'high-light':state ==  '邀请中'}" ng-click="actions.filter('邀请中')">邀请中</button>
+            <button ng-class="{'high-light':state ==  '已接受'}" ng-click="actions.filter('已接受')">已接受</button>
+            <button ng-class="{'high-light':state ==  '已拒绝'}" ng-click="actions.filter('已拒绝')">已拒绝</button>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th>姓名</th>
+                    <th>电话</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                <tr ng-repeat="guest in list">
+                    <td> {{guest.name}}</td>
+                    <td> {{guest.phone}}</td>
+                    <td> {{guest.state}}</td>
+                    <td>
+                        <span ng-if="guest.state == '邀请中'">
+                            <button ng-click="actions.setState(guest,'已接受')">接受</button>
+                            <button ng-click="actions.setState(guest,'已拒绝')">拒绝</button>
+                        </span>
+                        <button ng-click="actions.del(guest)">删除</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
 
+    // “s9.app”这个模块你可以理解为“主板”，现在我们的主板集成了一块“显卡”
+    // 我们现在希望把“硬盘”从集成的状态，变成独立的状态。
+    // 现在假设控制器是“显卡”，我们这一步要把显卡也变成独立的。
+
+    var app = angular.module('s9.app', ['s9.model_network','s9.ctrl']);
+</script>
 </body>
 </html>
