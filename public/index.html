@@ -3,42 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>服务</title>
+    <link rel="stylesheet" href="stylesheet/index.css">
     <script src="./javascript/angular.min.js"></script>
     <script src="./javascript/angular-route.min.js"></script>
     <script src="./model/modelService_network.js"></script>
     <script src="./controller/mainController.js"></script>
-    <style>
-        .high-light {
-            background-color: orange;
-        }
-    </style>
-
 </head>
 <body>
-<div ng-app="s9.app">
+<div ng-app="s9.app" class="box">
     <div ng-controller="MainController">
-        <div>
+        <div class="input">
             <label for="input_name">姓名</label>
-            <input type="text" id="input_name" ng-model="newGuest.name">
+            <input type="text" id="input_name" class="input_name" ng-model="newGuest.name">
             <label for="input_phone">电话</label>
-            <input type="text" id="input_phone" ng-model="newGuest.phone">
-            <button ng-click="actions.add()">邀请</button>
+            <input type="text" id="input_phone" class="input_phone" ng-model="newGuest.phone">
+            <button ng-click="actions.add()"> &lt;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请</button>
         </div>
-        <div>
-            <button ng-class="{'high-light':state ==  '全部'}" ng-click="actions.filter('全部')">全部</button>
-            <button ng-class="{'high-light':state ==  '邀请中'}" ng-click="actions.filter('邀请中')">邀请中</button>
-            <button ng-class="{'high-light':state ==  '已接受'}" ng-click="actions.filter('已接受')">已接受</button>
-            <button ng-class="{'high-light':state ==  '已拒绝'}" ng-click="actions.filter('已拒绝')">已拒绝</button>
+        <div class="top_state clearfix">
+            <button ng-class="{'high-light':state ==  '全部'}" ng-click="actions.filter('全部')">全&nbsp;&nbsp;&nbsp;&nbsp;部</button>
+            <button ng-class="{'high-light':state ==  '邀请中'}" ng-click="actions.filter('邀请中')">邀&nbsp;&nbsp;请&nbsp;&nbsp;中</button>
+            <button ng-class="{'high-light':state ==  '已接受'}" ng-click="actions.filter('已接受')">已&nbsp;&nbsp;接&nbsp;&nbsp;受</button>
+            <button ng-class="{'high-light':state ==  '已拒绝'}" ng-click="actions.filter('已拒绝')">已&nbsp;&nbsp;拒&nbsp;&nbsp;绝</button>
         </div>
-        <div>
+        <div class="guest_list">
             <table>
-                <tr>
+                <tr class="title">
                     <th>姓名</th>
                     <th>电话</th>
                     <th>状态</th>
                     <th>操作</th>
                 </tr>
-                <tr ng-repeat="guest in list">
+                <tr ng-repeat="guest in list" class="lists">
                     <td> {{guest.name}}</td>
                     <td> {{guest.phone}}</td>
                     <td> {{guest.state}}</td>

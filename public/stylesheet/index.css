@@ -1,0 +1,151 @@
+@charset "utf-8";
+
+/*基本样式*/ /*基本样式*/ /*基本样式*/
+p, div, ol, ul, dl, dt, dd, li, h1, h2, h3, h4, h5, h6, body {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    font-family: 宋体;
+    list-style: none;
+    color: #666;
+}
+
+img, input, button {
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    outline: none;
+    color: #666;
+}
+
+img {
+    vertical-align: middle;
+}
+
+i, s {
+    font-style: normal;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+.clearfix:after {
+    content: "";
+    height: 0;
+    line-height: 0;
+    clear: both;
+    display: block;
+    visibility: hidden;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+/*控制选中状态*/
+.high-light {
+    background-color: #F85D5D !important;
+    border: 1px solid #F85D5D !important;
+}
+
+.box {
+    /*background-color:rgba(50,215,28,0.1);*/
+    width: 1160px;
+    height: 600px;
+    margin: 10px auto;
+    background-color: rgb(245,245,245);
+    border: 1px solid #E6E5E5;
+}
+
+/*----输入框样式----*/
+.box .input {
+    padding-top: 7px;
+    background-color: #22B14C;
+    height: 50px;
+    margin: 0 3px;
+}
+
+.box .input label {
+    display: block;
+    float: left;
+    width: 50px;
+    height: 40px;
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    line-height: 40px;
+    margin-left: 20px;
+}
+
+.box .input input {
+    float: left;
+    height: 40px;
+    width: 400px;
+    border: 1px solid #27AE60;
+    margin-left: 8px;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+.box .input button {
+    height: 41px;
+    width: 150px;
+    font-size: 18px;
+    margin-left: 20px;
+    border: 0 none;
+    border-radius: 2px;
+    background-color: #F6CE41;
+}
+.box .top_state{
+    margin-left: 3px;
+}
+.box .top_state button{
+    height: 40px;
+    width: 100px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #818181;
+    background:#595959;
+    color: #eee;
+    float: left;
+    font-size: 18px;
+}
+.guest_list{
+    width: 99.5%;
+    margin-left: 1px;
+}
+.guest_list table{
+    width:100%;
+}
+
+.guest_list .title{
+    height: 30px;
+    background-color: #DEDBDB;
+}
+.guest_list .title th{
+    /*display: inline-block;*/
+    width: 25%;
+}
+.guest_list .lists{
+    font-size: 20px;
+    text-align: center;
+    color: #C10B1C;
+}
+.guest_list button{
+    font-size: 20px;
+    background-color: #F6CE41;
+    background-color: #A2B762;
+    border-radius: 2px;
+    color: #ddd;
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 60px;
+    width:30%;
+    margin-left: 2px;
+}
+
+
+
