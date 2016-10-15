@@ -24,7 +24,10 @@
             <button ng-class="{'high-light':state ==  '邀请中'}" ng-click="actions.filter('邀请中')">邀&nbsp;&nbsp;请&nbsp;&nbsp;中</button>
             <button ng-class="{'high-light':state ==  '已接受'}" ng-click="actions.filter('已接受')">已&nbsp;&nbsp;接&nbsp;&nbsp;受</button>
             <button ng-class="{'high-light':state ==  '已拒绝'}" ng-click="actions.filter('已拒绝')">已&nbsp;&nbsp;拒&nbsp;&nbsp;绝</button>
+            <input type="text" ng-model="nameValue" placeholder="请输入关键字">
+            <p>筛选：</p>
         </div>
+        
         <div class="guest_list">
             <table>
                 <tr class="title">
@@ -33,9 +36,9 @@
                     <th>状态</th>
                     <th>操作</th>
                 </tr>
-                <tr ng-repeat="guest in list" class="lists">
-                    <td> {{guest.name}}</td>
-                    <td> {{guest.phone}}</td>
+                <tr ng-repeat="guest in list | filter:nameValue" class="lists">
+                    <td ng-bind="guest.name"></td>
+                    <td ng-bind="guest.phone"></td>
                     <td> {{guest.state}}</td>
                     <td>
                         <span ng-if="guest.state == '邀请中'">

@@ -148,4 +148,23 @@ a {
 }
 
 
+.top_state p{
+    float: right;
+    height: 35px;
+    line-height: 35px;
+    /*width: 250px;*/
+    margin-top: 4px;
+    font-size: 18px;
+    color: red;
 
+}
+.top_state input{
+    height: 35px;
+    width: 250px;
+    border: 2px solid #ccc;
+    float: right;
+    margin-top: 4px;
+    margin-right: 5px;
+    padding-left: 10px;
+
+}
