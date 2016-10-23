@@ -40,7 +40,7 @@
 
   * ng-repeat
 
-  *
+  * ui - router
   
   *
 
